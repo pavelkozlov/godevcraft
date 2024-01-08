@@ -5,7 +5,36 @@
     <link>https://godevcraft.com/tags/</link>
     <description>Recent content in Tags on Go dev craft</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>ru-ru</language>
+    <language>en</language>
+    <lastBuildDate>Mon, 11 Mar 2019 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://godevcraft.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>css</title>
+      <link>https://godevcraft.com/tags/css/</link>
+      <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
+      <guid>https://godevcraft.com/tags/css/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>html</title>
+      <link>https://godevcraft.com/tags/html/</link>
+      <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
+      <guid>https://godevcraft.com/tags/html/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>markdown</title>
+      <link>https://godevcraft.com/tags/markdown/</link>
+      <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
+      <guid>https://godevcraft.com/tags/markdown/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>themes</title>
+      <link>https://godevcraft.com/tags/themes/</link>
+      <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
+      <guid>https://godevcraft.com/tags/themes/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>
