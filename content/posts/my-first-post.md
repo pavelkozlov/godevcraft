@@ -106,6 +106,7 @@ Tables aren't part of the core Markdown spec, but Hugo supports them out-of-the-
     1. Sub One
     2. Sub Two
 
+
 ## Other Elements — abbr, sub, sup, kbd, mark
 
 <abbr title="Graphics Interchange Format">GIF</abbr> is a bitmap image format.
