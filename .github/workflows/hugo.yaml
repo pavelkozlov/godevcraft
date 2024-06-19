@@ -3,7 +3,7 @@ name: Build and Deploy Hugo Site
 on:
   push:
     branches:
-      - main  # укажите ветку, на которую будет триггериться сборка
+      - main  # specify the branch that will trigger the build
 
 jobs:
   build:
@@ -13,12 +13,12 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
       with:
-        submodules: true  # Инициализация сабмодулей
+        submodules: true  # Initialize submodules
 
     - name: Set up Hugo
       uses: peaceiris/actions-hugo@v2
       with:
-        hugo-version: '0.124.1'  # используйте вашу версию Hugo
+        hugo-version: '0.124.1'  # specify your Hugo version
 
     - name: Build site
       run: hugo --gc --minify
@@ -30,21 +30,19 @@ jobs:
         git config --global user.name 'github-actions[bot]'
         git config --global user.email 'github-actions[bot]@users.noreply.github.com'
         
-        # Проверка наличия ветки front
-        if git ls-remote --exit-code --heads origin front; then
-          echo "Branch 'front' exists."
-          git clone --branch front https://${GITHUB_TOKEN}@github.com/${{ github.repository }} front
+        # Clone the repository and checkout the 'front' branch if it exists
+        git clone https://${GITHUB_TOKEN}@github.com/${{ github.repository }} repo
+        cd repo
+
+        if git rev-parse --verify front; then
+          git checkout front
         else
-          echo "Branch 'front' does not exist. Creating it."
-          git clone https://${GITHUB_TOKEN}@github.com/${{ github.repository }} front
-          cd front
           git checkout --orphan front
           git rm -rf .
-          cd ..
         fi
 
-        rsync -av --delete public/ front/
-        cd front
+        # Copy the built site files to the 'front' branch and push
+        rsync -av --delete ../public/ .
         git add .
         git commit -m "Deploy to front branch"
-        git push origin front
+        git push origin front --force
