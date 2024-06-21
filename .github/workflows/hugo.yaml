@@ -3,8 +3,7 @@ name: Build and Deploy Hugo Site
 on:
   push:
     branches:
-      - main
-      - master
+      - main  # или замени на ветку, которую используешь
 
 jobs:
   build:
@@ -25,18 +24,17 @@ jobs:
       - name: Build the website
         run: hugo
 
-      - name: Deploy to gh-pages
+      - name: Deploy to external repo
         if: success()
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TARGET_REPO: ${{ secrets.TARGET_REPO }}  # Add this secret in your repository settings
+          TARGET_BRANCH: gh-pages  # Or any other branch you want to push to
         run: |
-          BRANCH=${{ github.ref_name }}
           cd public
           git init
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add .
           git commit -m "Deploy Hugo site"
-          git remote add origin https://github.com/pavelkozlov/godevcraft-front.git
-          git branch -M main
-          git push -u --force "https://pavelkozlov:${{ secrets.GITHUB_TOKEN }}@github.com/pavelkozlov/godevcraft-front.git" main
+          git push --force "https://${{ secrets.GITHUB_ACTOR }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ env.TARGET_REPO }}.git" master:${{ env.TARGET_BRANCH }}
