@@ -18,6 +18,9 @@ jobs:
         with:
           hugo-version: 'latest'
 
+      - name: Update submodules
+        run: git submodule update --init --recursive
+
       - name: Install Hugo modules
         run: hugo mod get -u
 
