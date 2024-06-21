@@ -27,8 +27,8 @@ jobs:
       - name: Deploy to external repo
         if: success()
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TARGET_REPO: ${{ secrets.TARGET_REPO }}  # Add this secret in your repository settings
+          TARGET_TOKEN: ${{ secrets.TARGET_TOKEN }}  # Add this secret in your repository settings
           TARGET_BRANCH: gh-pages  # Or any other branch you want to push to
         run: |
           cd public
@@ -37,4 +37,4 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add .
           git commit -m "Deploy Hugo site"
-          git push --force "https://${{ secrets.GITHUB_ACTOR }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ env.TARGET_REPO }}.git" master:${{ env.TARGET_BRANCH }}
+          git push --force "https://x-access-token:${{ env.TARGET_TOKEN }}@github.com/${{ env.TARGET_REPO }}.git" master:${{ env.TARGET_BRANCH }}
