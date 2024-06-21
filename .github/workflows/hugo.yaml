@@ -22,7 +22,7 @@ jobs:
         run: hugo mod get -u
 
       - name: Build the website
-        run: hugo
+        run: hugo --gc --minify
 
       - name: Deploy to external repo
         if: success()
