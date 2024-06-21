@@ -42,5 +42,7 @@ jobs:
           git commit -m "Deploy Hugo site"
           git push --force "https://x-access-token:${{ env.TARGET_TOKEN }}@github.com/${{ env.TARGET_REPO }}.git" master:${{ env.TARGET_BRANCH }}
 
+      - name: Mark directory as safe
+        run: git config --global --add safe.directory /local/godevcraft
       - name: pull
         run: cd /local/godevcraft/ && git pull origin main
