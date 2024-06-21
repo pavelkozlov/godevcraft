@@ -39,4 +39,4 @@ jobs:
           git commit -m "Deploy Hugo site"
           git remote add origin https://github.com/pavelkozlov/godevcraft-front.git
           git branch -M main
-          git push -u --force "https://${{ secrets.GITHUB_TOKEN }}@github.com/pavelkozlov/godevcraft-front.git" main
+          git push -u --force "https://pavelkozlov:${{ secrets.GITHUB_TOKEN }}@github.com/pavelkozlov/godevcraft-front.git" main
