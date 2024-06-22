@@ -44,5 +44,5 @@ jobs:
 
       - name: Mark directory as safe
         run: git config --global --add safe.directory /local/godevcraft
-      - name: pull
+      - name: Git pull
         run: cd /local/godevcraft/ && git fetch --all && git reset --hard origin/main
